@@ -15,12 +15,8 @@ export const rtkQueryMiddleware: Middleware = (api: MiddlewareAPI) => (next) => 
   const showRejectedModal = !!(isRejected(action) || isRejectedWithValue(action));
 
   if (showFulfilledModal) {
-    const endpointName = action?.meta?.arg?.endpointName;
-    const allowedEndpointNames = ['updatePhone', 'updateEmail'];
-    if (allowedEndpointNames.includes(endpointName)) {
-      const message = hasStatusDescription ? statusDescription : 'Operação executada com Successo.';
-      api.dispatch(showSnackbar({ message, type: 'success' }));
-    }
+    const message = hasStatusDescription ? statusDescription : 'Operação executada com Successo.';
+    api.dispatch(showSnackbar({ message, type: 'success' }));
   }
 
   if (showRejectedModal) {

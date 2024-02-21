@@ -5,11 +5,10 @@ import {
 
 import { NewsCompleteDTO } from '../dtos/api-news-dto';
 
-export interface NewsAllResponseModel extends BaseEndpointResponseModel<NewsCompleteDTO[]> { }
+export interface NewsAllResponseModel extends BaseEndpointResponseModel<NewsCompleteDTO[] | undefined> { }
 
-export const transformNewsAllResponse = ({
-  newsDTO,
-  ...rest
-}: any): NewsAllResponseModel => {
-  return transformBaseEndpointResponse(rest, newsDTO);
+export const transformNewsAllResponse = (
+  response: BaseEndpointResponseModel<NewsCompleteDTO[] | undefined>
+): BaseEndpointResponseModel<NewsCompleteDTO[] | undefined> => {
+  return transformBaseEndpointResponse(response, response.data);
 };

@@ -22,8 +22,6 @@ import {
 } from '../models/endpoints/news-edit-endpoint-model';
 import { NewsOneRequestModel } from '../models/endpoints/news-one-endpoint-model';
 
-console.log(EnvConfig.baseApiUrl)
-
 export const authService = apiService.injectEndpoints({
   endpoints: (builder) => ({
     getAllNews: builder.query<NewsAllResponseModel, void>({

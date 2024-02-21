@@ -18,7 +18,7 @@ export const generateQueryProp = ({
     }),
     headers: undefined,
     validateStatus: (response : any, body: any) => {
-      return response.status === 200 && body?.status !== 'ERRO';
+      return response.status === 200 && body;
     },
     async responseHandler(response: any) {
       return response.json();
