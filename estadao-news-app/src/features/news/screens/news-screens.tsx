@@ -1,7 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Button, IconButton, List, ListItem, ListItemText } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import { Button } from '@mui/material';
 import { useTranslation } from '../../../hooks/use-translation';
 import NewsFormModal from '../components/news-form-modal';
 import NewsDetailsModal from '../components/news-detail-modal';
@@ -13,9 +11,11 @@ import {
   useGetAllNewsQuery
 } from '../services/news-service';
 import { NewsCompleteDTO } from '../models/dtos/api-news-dto';
+import NewsCardGroup from '../components/card-grou-news';
+import CardNews from '../components/card-news';
 
 const NewsList: React.FC = () => {
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
   const { data, error, isLoading, refetch } = useGetAllNewsQuery();
   const [deleteNews, deleteNewsState] = useDelNewsMutation();
   const [addNews, addNewsState] = useAddNewsMutation();
@@ -74,34 +74,25 @@ const NewsList: React.FC = () => {
     const data = await deleteNews({ id });
   }, []);
 
-  if (isLoading) return <div>{t('loading')}</div>;
-  if (error) return <div>{t('error')}</div>;
+  if (isLoading) return <div>{'loading'}</div>;
+  if (error) return <div>{'error'}</div>;
 
   return (
     <>
       <Button variant="contained" onClick={handleOpenAddModal}>Add News</Button>
-      <List>
+      <NewsCardGroup>
         {!isLoading && data?.data?.map((news: NewsCompleteDTO) => (
-          <ListItem key={news.id} secondaryAction={
-            <>
-              <IconButton edge="end" aria-label="edit" onClick={() => handleOpenEditModal(news)}>
-                <EditIcon />
-              </IconButton>
-              <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(news.id)}>
-                <DeleteIcon />
-              </IconButton>
-              <IconButton edge="end" aria-label="details" onClick={() => handleOpenDetailsModal(news)}>
-                {/* Ícone de detalhes aqui */}
-              </IconButton>
-            </>
-          }>
-            <ListItemText 
-              primary={news.title} 
-              secondary={new Date(news.date_time_publication).toLocaleDateString()} 
-            />
-          </ListItem>
+          <CardNews 
+            title={news.title}
+            imageUrl={news.thumbnail}
+            dateTime={news.date_time_publication}
+            url={news.url}
+            handleOpenDetailsModal={() => handleOpenDetailsModal(news)}
+            handleOpenEditModal={() => handleOpenEditModal(news)}
+            handleDelete={() => handleDelete(news.id)}
+          />
         ))}
-      </List>
+      </NewsCardGroup>
       <NewsFormModal
         open={modalOpen}
         onClose={handleCloseModal}

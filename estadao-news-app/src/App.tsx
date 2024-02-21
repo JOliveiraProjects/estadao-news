@@ -9,7 +9,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <NewsList />
+      <section className="App-body">
+        <NewsList />
+      </section>
+      <footer>
+        <p>@Estadao</p>
+      </footer>
     </div>
   );
 }
