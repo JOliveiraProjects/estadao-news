@@ -20,3 +20,9 @@ export type NewsUpdateRequest = {
 export type NewsGetRequest = {
     id: string;
 };
+
+export interface BaseEndpointResponseModel<T = unknown> {
+    status?: number;
+    data?: T;
+    description?: string;
+}

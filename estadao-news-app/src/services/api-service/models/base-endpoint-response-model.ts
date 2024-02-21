@@ -1,11 +1,7 @@
 export interface BaseEndpointResponseModel<T = unknown> {
-  status:
-    | {
-        type: string;
-        description: string;
-      }
-    | undefined;
+  status?: number;
   data?: T;
+  description?: string;
 }
 
 export const transformBaseEndpointResponse = <T = any>(
@@ -13,10 +9,8 @@ export const transformBaseEndpointResponse = <T = any>(
   data?: T
 ): BaseEndpointResponseModel<T> => {
   return {
-    status: {
-      type: resp?.status,
-      description: resp?.descricaoStatus,
-    },
+    status: resp?.status,
+    description: resp?.descricaoStatus,
     data,
   };
 };

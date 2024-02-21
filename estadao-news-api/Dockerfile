@@ -6,7 +6,6 @@ RUN npm install
 # Copia o script de entrada e dá permissão de execução
 COPY entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
-
 CMD ["/usr/src/app/entrypoint.sh"]
 
 EXPOSE 3001

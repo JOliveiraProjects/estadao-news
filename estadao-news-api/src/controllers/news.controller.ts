@@ -1,20 +1,20 @@
 import { Request, Response } from "express";
-import NewsService from "../services/news.services";
+import BaseController from "./base.controller";
 import { NewsRequest, NewsUpdateRequest } from "../models/news";
+import NewsService from "../services/news.services";
 
-export default class NewsController {
+export default class NewsController extends BaseController {
     async getAll(req: Request, res: Response) {
         const service = new NewsService();
-        const news = await service.all();
-        return res.json(news);
+        const result = await service.all();
+        return super.dataResult(res, result);
     }
 
     async getOne(req: Request, res: Response) {
         const { id } = req.params;
         const service = new NewsService();
         const result = await service.byId({ id });
-        if (result instanceof Error) return res.status(400).json(result.message);
-        return res.json(result);
+        return super.dataResult(res, result);
     }
 
     async create(req: Request, res: Response) {
@@ -28,8 +28,7 @@ export default class NewsController {
             thumbnail, 
             content 
         } as NewsRequest);
-        if (result instanceof Error) return res.status(400).json(result.message);
-        return res.json(result);
+        return super.dataResult(res, result);
     }
 
     async edit(req: Request, res: Response) {
@@ -45,15 +44,13 @@ export default class NewsController {
             thumbnail, 
             content 
         } as NewsUpdateRequest);
-        if (result instanceof Error) return res.status(400).json(result.message);
-        return res.json(result);
+        return super.dataResult(res, result);
     }
 
     async delete(req: Request, res: Response) {
         const { id } = req.params;
         const service = new NewsService();
         const result = await service.delete(id);
-        if (result instanceof Error) return res.status(400).json(result.message);
-        return res.status(204).end();
+        return super.dataResult(res, result);
     }
 }

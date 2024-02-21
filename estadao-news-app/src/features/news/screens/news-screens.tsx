@@ -38,6 +38,8 @@ export default function NewsList() {
   if (isLoading) return <div>{t('loading')}</div>;
   if (error) return <div>{t('error')}</div>;
 
+  console.log(data)
+
   return (
     <List>
       {!isLoading && data?.data?.map((news) => (
