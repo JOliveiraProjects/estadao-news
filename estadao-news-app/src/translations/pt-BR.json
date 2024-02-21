@@ -1,0 +1,23 @@
+{
+  "shared": {
+    "labels": {
+      "password":"Senha",
+      "beneficiary":"Beneficiário"
+    },
+    "input": {
+      "cpf": {
+        "label": "Digite seu CPF ou CNPJ",
+        "placeholder": "Apenas números",
+        "validation": "CPF"
+      }
+    }
+  },
+  "feature": {
+    "home": {
+      "updateData": {
+        "text": "Mantenha seus dados atualizados.",
+        "knowMoreText": "Saiba mais."
+      }
+    }
+  }
+}

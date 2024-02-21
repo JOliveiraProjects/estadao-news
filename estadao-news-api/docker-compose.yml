@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  server:
+    build:
+      context: ./
+      target: prod-build-stage
+      dockerfile: Dockerfile
+    container_name: server
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    restart: 'unless-stopped'
+    environment:
+      NODE_ENV: production
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: estadao
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: database
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/apps/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: estadao
+      MYSQL_USER: api
+      MYSQL_PASSWORD: 1020304050
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
