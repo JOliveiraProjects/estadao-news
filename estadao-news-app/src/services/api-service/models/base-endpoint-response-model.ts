@@ -8,7 +8,6 @@ export const transformBaseEndpointResponse = <T = any>(
   resp: any,
   data?: T
 ): BaseEndpointResponseModel<T> => {
-  console.log(data)
   return {
     status: resp?.status,
     description: resp?.descricaoStatus,

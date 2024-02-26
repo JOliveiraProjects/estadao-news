@@ -57,14 +57,14 @@ const CardNews: React.FC<CardNewsProps> = ({
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions disableSpacing>
+        <CardActions disableSpacing style={{display: 'flex', gap: 3, alignItems: 'center'}}>
+          <Link href={url} variant="body2" rel="noreferrer">leia mais</Link>
           <IconButton edge="end" aria-label="edit" onClick={handleOpenEditModal}>
             <EditIcon />
           </IconButton>
           <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
-          <Link href={url} variant="body2" rel="noreferrer">leia mais</Link>
         </CardActions>
       </Card>
 

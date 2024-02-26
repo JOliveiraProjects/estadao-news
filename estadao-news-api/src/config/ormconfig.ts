@@ -11,6 +11,6 @@ export const connectDB = new DataSource({
     logging: false,
     entities: ["./src/entities/**/*.ts"],
     migrations: ['./src/database/migrations/**/*.ts']
-})
+});
 
 export default connectDB;

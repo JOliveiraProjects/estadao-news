@@ -1,22 +1,25 @@
 {
   "shared": {
-    "labels": {
-      "password":"Senha",
-      "beneficiary":"Beneficiário"
-    },
-    "input": {
-      "cpf": {
-        "label": "Digite seu CPF ou CNPJ",
-        "placeholder": "Apenas números",
-        "validation": "CPF"
-      }
-    }
+    "labels": {},
+    "input": {}
   },
   "feature": {
-    "home": {
-      "updateData": {
-        "text": "Mantenha seus dados atualizados.",
-        "knowMoreText": "Saiba mais."
+    "news": {
+      "home": {
+        "button-add-news": "Adiciona nova noticia"
+      },
+      "modal-detail": {
+        "button-close": "Fechar"
+      },
+      "modal-form": {
+        "label-hat": "Chapéu",
+        "label-url": "URL",
+        "label-title": "Título",
+        "label-publication-date": "Data e Hora da Publicação",
+        "button-image": "Carregar Imagem",
+        "button-thumbnail": "Carregar Thumbnail",
+        "button-close": "Fechar",
+        "button-save": "Salvar"
       }
     }
   }

@@ -6,8 +6,9 @@ import {
   DialogActions, 
   Button 
 } from '@mui/material';
+import HtmlView from 'components/html-view/html-view';
+import { useTranslation } from 'hooks/use-translation';
 import { NewsCompleteDTO } from '../models/dtos/api-news-dto';
-import HtmlView from './html-view';
 
 interface NewsItem extends NewsCompleteDTO { }
 
@@ -18,6 +19,7 @@ interface NewsDetailsModalProps {
 }
 
 const NewsDetailsModal: React.FC<NewsDetailsModalProps> = ({ open, onClose, news }) => {
+  const { t } = useTranslation('feature.news.modal-detail');
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{news.hat}</DialogTitle>
@@ -27,7 +29,7 @@ const NewsDetailsModal: React.FC<NewsDetailsModalProps> = ({ open, onClose, news
         <HtmlView htmlContent={news.content} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose}>{t('button-close')}</Button>
       </DialogActions>
     </Dialog>
   );

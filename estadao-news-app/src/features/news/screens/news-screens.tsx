@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { Button } from '@mui/material';
-import { useTranslation } from '../../../hooks/use-translation';
+import { Button, Grid } from '@mui/material';
+import { useTranslation } from 'hooks/use-translation';
 import NewsFormModal from '../components/news-form-modal';
 import NewsDetailsModal from '../components/news-detail-modal';
 
@@ -15,7 +15,7 @@ import NewsCardGroup from '../components/card-grou-news';
 import CardNews from '../components/card-news';
 
 const NewsList: React.FC = () => {
-  //const { t } = useTranslation();
+  const { t } = useTranslation('feature.news.home');
   const { data, error, isLoading, refetch } = useGetAllNewsQuery();
   const [deleteNews, deleteNewsState] = useDelNewsMutation();
   const [addNews, addNewsState] = useAddNewsMutation();
@@ -78,35 +78,43 @@ const NewsList: React.FC = () => {
   if (error) return <div>{'error'}</div>;
 
   return (
-    <>
-      <Button variant="contained" onClick={handleOpenAddModal}>Add News</Button>
-      <NewsCardGroup>
-        {!isLoading && data?.data?.map((news: NewsCompleteDTO) => (
-          <CardNews 
-            title={news.title}
-            imageUrl={news.thumbnail}
-            dateTime={news.date_time_publication}
-            url={news.url}
-            handleOpenDetailsModal={() => handleOpenDetailsModal(news)}
-            handleOpenEditModal={() => handleOpenEditModal(news)}
-            handleDelete={() => handleDelete(news.id)}
-          />
-        ))}
-      </NewsCardGroup>
-      <NewsFormModal
-        open={modalOpen}
-        onClose={handleCloseModal}
-        onSubmit={handleFormSubmit}
-        initialData={selectedNews}
-      />
-      {selectedNews && (
-        <NewsDetailsModal
-          open={detailsModalOpen}
+    <Grid container spacing={2}>
+      <Grid item xs={12} 
+      container
+      direction="row"
+      justifyContent="flex-end"
+      alignItems="center" style={{margin: 10}}>
+        <Button variant="contained" onClick={handleOpenAddModal}>{t('button-add-news')}</Button>
+      </Grid>
+      <Grid item xs={12}>
+        <NewsCardGroup>
+          {!isLoading && data?.data?.map((news: NewsCompleteDTO) => (
+            <CardNews 
+              title={news.title}
+              imageUrl={news.thumbnail}
+              dateTime={news.date_time_publication}
+              url={news.url}
+              handleOpenDetailsModal={() => handleOpenDetailsModal(news)}
+              handleOpenEditModal={() => handleOpenEditModal(news)}
+              handleDelete={() => handleDelete(news.id)}
+            />
+          ))}
+        </NewsCardGroup>
+        <NewsFormModal
+          open={modalOpen}
           onClose={handleCloseModal}
-          news={selectedNews}
+          onSubmit={handleFormSubmit}
+          initialData={selectedNews}
         />
-      )}
-    </>
+        {selectedNews && (
+          <NewsDetailsModal
+            open={detailsModalOpen}
+            onClose={handleCloseModal}
+            news={selectedNews}
+          />
+        )}
+      </Grid>
+    </Grid>
   );
 };
 

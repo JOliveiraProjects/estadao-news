@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store } from './store/store';
 import './index.css';
-import App from './App';
+import HomeScreen from './features/home/screens/home-screen';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <App />
+      <HomeScreen />
     </ReduxProvider>
   </React.StrictMode>
 );

@@ -3,15 +3,14 @@ services:
   server:
     build:
       context: ./estadao-news-api
-      target: prod-build-stage
       dockerfile: Dockerfile
     container_name: server
     ports:
       - '3001:3001'
     volumes:
-      - ./:/app
+      - ./estadao-news-api:/app
       - /app/node_modules
-    restart: 'unless-stopped'
+    restart: unless-stopped
     environment:
       NODE_ENV: production
       DB_HOST: mysql
@@ -47,7 +46,7 @@ services:
     ports:
       - '80:80'
     environment:
-      REACT_APP_URL_BASE: server
+      REACT_APP_URL_BASE: http://server:3001
     depends_on:
       - server
     networks:
