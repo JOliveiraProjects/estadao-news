@@ -1,4 +1,4 @@
-import connectDB from "../config/ormconfig";
+import connectDB from "../database/ormconfig";
 import { News } from "../entities/News";
 import { NewsGetRequest, NewsRequest, NewsUpdateRequest } from "../models/news";
 

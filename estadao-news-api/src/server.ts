@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from "express";
 import cors from 'cors';
 import { routes } from "./routes";
-import { connectDB } from "../src/config/ormconfig";
+import connectDB from "./database/ormconfig";
 
 connectDB.initialize().then(async () => {
     console.log('Database connected');
