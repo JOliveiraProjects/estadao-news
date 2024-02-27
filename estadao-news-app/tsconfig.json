@@ -24,7 +24,8 @@
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
       "features/*": ["features/*"],
-      "store/*": ["store/*"]
+      "store/*": ["store/*"],
+      "themes/*": ["themes/*"],
     }
   },
   "include": ["src"]

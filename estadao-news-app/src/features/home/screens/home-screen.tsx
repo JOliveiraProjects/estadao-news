@@ -1,24 +1,23 @@
-import React from 'react';
-import './home.css';
-import { useInitResources } from '../../../hooks/use-init-resources/use-init-resources';
 import MenuBarComponent from '../components/menubar';
 import NewsList from '../../news/screens/news-screens';
+import { Container } from 'components/Container';
 
-function App() {
-  const [loaded] = useInitResources();
+interface HomeScreenProps {
+  handleChangeTheme: () => void;
+}
 
-  if (!loaded) {
-    return null;
-  }
-  
+function HomeScreen ({
+  handleChangeTheme
+}: HomeScreenProps) {
+
   return (
-    <div className="App">
+    <Container>
       <MenuBarComponent/>
-      <section className="App-body">
+      <Container>
         <NewsList />
-      </section>
-    </div>
+      </Container>
+    </Container>
   );
 }
 
-export default App;
+export default HomeScreen;
