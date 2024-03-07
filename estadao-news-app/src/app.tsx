@@ -29,6 +29,6 @@ function App() {
         </ReduxProvider>
       </React.StrictMode>
     );
-  };
+};
 
-  export default App;
+export default App;
