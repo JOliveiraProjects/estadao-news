@@ -13,9 +13,10 @@ import {
 import { NewsCompleteDTO } from '../models/dtos/api-news-dto';
 import NewsCardGroup from '../components/card-grou-news';
 import CardNews from '../components/card-news';
+import ptBR from '../translations/pt-BR.json';
 
 const NewsList: React.FC = () => {
-  const { t } = useTranslation('feature.news.home');
+  const { t } = useTranslation('feature.news.home', ptBR);
   const { data, error, isLoading, refetch } = useGetAllNewsQuery();
   const [deleteNews, deleteNewsState] = useDelNewsMutation();
   const [addNews, addNewsState] = useAddNewsMutation();

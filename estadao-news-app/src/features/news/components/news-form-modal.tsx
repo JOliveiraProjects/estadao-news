@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { NewsCompleteDTO } from '../models/dtos/api-news-dto';
 import { useTranslation } from 'hooks/use-translation';
+import ptBR from '../translations/pt-BR.json';
 
 interface NewsFormData extends NewsCompleteDTO { }
 
@@ -34,7 +35,7 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 const NewsFormModal: React.FC<NewsFormModalProps> = ({ open, onClose, onSubmit, initialData }) => {
-  const { t } = useTranslation('feature.news.modal-form');
+  const { t } = useTranslation('feature.news.modal-form', ptBR);
   const { register, handleSubmit, reset } = useForm<NewsFormData>();
 
   useEffect(() => {

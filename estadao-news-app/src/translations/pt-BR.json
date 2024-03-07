@@ -1,26 +1,8 @@
 {
   "shared": {
-    "labels": {},
+    "labels": {
+      "add": "adicionando"
+    },
     "input": {}
-  },
-  "feature": {
-    "news": {
-      "home": {
-        "button-add-news": "Adiciona nova noticia"
-      },
-      "modal-detail": {
-        "button-close": "Fechar"
-      },
-      "modal-form": {
-        "label-hat": "Chapéu",
-        "label-url": "URL",
-        "label-title": "Título",
-        "label-publication-date": "Data e Hora da Publicação",
-        "button-image": "Carregar Imagem",
-        "button-thumbnail": "Carregar Thumbnail",
-        "button-close": "Fechar",
-        "button-save": "Salvar"
-      }
-    }
   }
 }

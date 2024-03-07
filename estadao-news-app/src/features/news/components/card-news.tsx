@@ -37,8 +37,6 @@ const CardNews: React.FC<CardNewsProps> = ({
   handleOpenEditModal,
   handleDelete
 }) => {
-
-
   return (
       <Card variant="outlined" style={cardStyle}>
         <CardActionArea onClick={handleOpenDetailsModal}>

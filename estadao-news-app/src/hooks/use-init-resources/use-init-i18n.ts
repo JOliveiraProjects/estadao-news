@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { I18n } from 'i18n-js';
-import ptBR from '../../translations/pt-BR.json';
+import ptBR from 'translations/pt-BR.json';
 
 const translations = {
   'pt-BR': ptBR,
