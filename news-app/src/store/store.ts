@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query/react';
 import { apiService } from '../services/api-service/api.service';
 
 import { rtkQueryMiddleware } from './rtk-middleware';
-import { reducer as snackbarReducer } from '../store/snackbar-slice';
+import { reducer as snackbarReducer } from './snackbar-slice';
 
 export const store = configureStore({
   reducer: {

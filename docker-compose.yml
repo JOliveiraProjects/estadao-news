@@ -2,24 +2,24 @@ version: '3.8'
 services:
   mysql:
     image: mysql:5.7
-    container_name: estadao_mysql
+    container_name: news_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: estadaodb
-      MYSQL_USER: estadao
-      MYSQL_PASSWORD: estadao
+      MYSQL_DATABASE: newsdb
+      MYSQL_USER: news
+      MYSQL_PASSWORD: news
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
-      - estadao_network
+      - news_network
 
   server:
     build:
-      context: ./estadao-news-api
+      context: ./news-api
       dockerfile: Dockerfile
-    container_name: estadao_api_server
+    container_name: news_api_server
     ports:
       - "3001:3001"
     environment:
@@ -30,18 +30,17 @@ services:
       DB_PORT: 3306
       DB_USERNAME: root
       DB_PASSWORD: root
-      DB_DATABASE: estadaodb
+      DB_DATABASE: newsdb
     depends_on:
       - mysql
     networks:
-      - estadao_network
-
+      - news_network
 
   frontend:
     build:
-      context: ./estadao-news-app
+      context: ./news-app
       dockerfile: Dockerfile
-    container_name: estadao_news_frontend
+    container_name: news_frontend
     ports:
       - "80:80"
     environment:
@@ -49,10 +48,10 @@ services:
     depends_on:
       - server
     networks:
-      - estadao_network
+      - news_network
 
 networks:
-  estadao_network:
+  news_network:
     driver: bridge
 
 volumes:
